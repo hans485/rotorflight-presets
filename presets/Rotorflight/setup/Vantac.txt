@@ -4,7 +4,7 @@
 #$ BOARD_NAME: VANTAC_RF007
 
 #$ CATEGORY: SETUP
-#$ STATUS: EXPERIMENTAL
+#$ STATUS: OFFICIAL
 #$ KEYWORDS: Stratos 200
 #$ AUTHOR: Rotorflight
 #$ DESCRIPTION: Preset for the Xlpower stratos 200. It can be used to fully setup your stratos 200 and used with the tune developed by ArchieRC and HAQ. 

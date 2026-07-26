@@ -1021,7 +1021,7 @@
     },
     {
       "fullPath": "presets/Rotorflight/setup/Flydragon-Pro.txt",
-      "hash": "508d4d6a7fe16c445258e5c7c9bacad2995baa152cd3b581f2ce1c53d633335f",
+      "hash": "3c254764a720c7cf8c9ed1ec9ae0d152f72678bdc275ab3b09054c23b33a9e80",
       "title": "Stratos 200 setup and tune (4S)",
       "firmware_version": [
         "4.6"
@@ -1029,6 +1029,25 @@
       "board_name": [
         "FLYDRAGON_PRO6000",
         "FLYDRAGON_PRO42688"
+      ],
+      "category": "SETUP",
+      "status": "OFFICIAL",
+      "keywords": [
+        "Stratos 200"
+      ],
+      "author": "Rotorflight",
+      "priority": 0,
+      "force_options_review": true
+    },
+    {
+      "fullPath": "presets/Rotorflight/setup/Goosky-F701.txt",
+      "hash": "481f6e3e83ebf765a4157a5ac378527c07be2be95876e9962f61588afa9ca93a",
+      "title": "Stratos 200 setup and tune (4S)",
+      "firmware_version": [
+        "4.6"
+      ],
+      "board_name": [
+        "GOOSKY_F701"
       ],
       "category": "SETUP",
       "status": "EXPERIMENTAL",
@@ -1041,7 +1060,7 @@
     },
     {
       "fullPath": "presets/Rotorflight/setup/Nexus-F7.txt",
-      "hash": "70ad056a9a1495c0c1d81cef405edc63763d0a369ea072aa0576b632596d50eb",
+      "hash": "24623b4c601bff11331a1e362b338613ed9ff4b4efc97725e5fbdc6e117d932e",
       "title": "Stratos 200 setup and tune (4S)",
       "firmware_version": [
         "4.6"
@@ -1060,7 +1079,7 @@
     },
     {
       "fullPath": "presets/Rotorflight/setup/Nexus-XR.txt",
-      "hash": "15cd524b8f89eca537790e31a5f3ba70485512e93e29416892882fb7f4cb16a4",
+      "hash": "c48deff0d3af4b84fdceaf4c5986511fe6385278a5ac009140d183ddc4f6cb95",
       "title": "Stratos 200 setup and tune (4S)",
       "firmware_version": [
         "4.6"
@@ -1079,7 +1098,7 @@
     },
     {
       "fullPath": "presets/Rotorflight/setup/Vantac.txt",
-      "hash": "eb72cf125fa246a8e609b830d2215d2cbb49dafcecd9a629580befead5397c97",
+      "hash": "836bcda5dcddc7e24731ecb5e2498779672f85e966744cec94cc5046dbdb384c",
       "title": "Stratos 200 setup and tune (4S)",
       "firmware_version": [
         "4.6"
@@ -1088,7 +1107,7 @@
         "VANTAC_RF007"
       ],
       "category": "SETUP",
-      "status": "EXPERIMENTAL",
+      "status": "OFFICIAL",
       "keywords": [
         "Stratos 200"
       ],

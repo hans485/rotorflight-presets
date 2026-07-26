@@ -1,11 +1,10 @@
 #$ TITLE: Stratos 200 setup and tune (4S)
 
 #$ FIRMWARE_VERSION: 4.6
-#$ BOARD_NAME: FLYDRAGON_PRO6000
-#$ BOARD_NAME: FLYDRAGON_PRO42688
+#$ BOARD_NAME: GOOSKY_F701
 
 #$ CATEGORY: SETUP
-#$ STATUS: OFFICIAL
+#$ STATUS: EXPERIMENTAL
 #$ KEYWORDS: Stratos 200
 #$ AUTHOR: Rotorflight
 #$ DESCRIPTION: Preset for the Xlpower stratos 200. It can be used to fully setup your stratos 200 and used with the tune developed by ArchieRC and HAQ. 
@@ -27,7 +26,7 @@
     defaults nosave
     # resources
     resource SERVO 4 NONE
-    resource MOTOR 2 C09
+    resource MOTOR 2 A09
 
     # feature
     feature TELEMETRY
@@ -74,7 +73,7 @@
     set use_unsynced_pwm = OFF
     set motor_pwm_protocol = DSHOT300
     set motor_poles = 24,12,0,0
-    set align_board_yaw = 0
+    set align_board_yaw = 180
     set bat_profile = 1
     set bat_capacity = 650,0,0,0,0,0
     set current_meter = ESC

@@ -141,7 +141,7 @@
     set crsf_telemetry_mode = CUSTOM
     set crsf_telemetry_link_rate = 500
     #$ OPTION END
-    #$ OPTION BEGIN (UNCHECKED): D500/K1000
+    #$ OPTION BEGIN (UNCHECKED): D500/F1000
     set serialrx_provider = CRSF
     set crsf_telemetry_mode = CUSTOM
     set crsf_telemetry_link_rate = 1000
