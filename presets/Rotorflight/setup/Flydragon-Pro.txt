@@ -74,7 +74,7 @@
     set use_unsynced_pwm = OFF
     set motor_pwm_protocol = DSHOT300
     set motor_poles = 24,12,0,0
-    set align_board_yaw = 180
+    set align_board_yaw = 0
     set bat_profile = 1
     set bat_capacity = 650,0,0,0,0,0
     set current_meter = ESC
