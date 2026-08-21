@@ -1,0 +1,600 @@
+#$ TITLE: Stratos 200 setup and tune (4S)
+
+#$ FIRMWARE_VERSION: 4.6
+#$ BOARD_NAME: NEXUS_X
+
+
+#$ CATEGORY: SETUP
+#$ STATUS: EXPERIMENTAL
+#$ KEYWORDS: Stratos 200
+#$ AUTHOR: Rotorflight
+#$ DESCRIPTION: Preset for the Xlpower stratos 200. It can be used to fully setup your stratos 200 and used with the tune developed by ArchieRC and HAQ. 
+#$ DESCRIPTION: Make sure to carefully check everything and do a complete bench test!
+#$ DESCRIPTION: SERVO PAGE:
+#$ DESCRIPTION: Override servos and adjust center point to 90 deg
+#$ DESCRIPTION: MIXER PAGE:
+#$ DESCRIPTION: Override mixers
+#$ DESCRIPTION: 1. Fold blades and align to 0 deg using swash trim
+#$ DESCRIPTION: 2. Validate calibration of Cyclic at 11deg
+#$ DESCRIPTION: 3. Validate Calibration of Collective at 14 deg
+#$ PRIORITY: 0
+#$ FORCE_OPTIONS_REVIEW: TRUE
+#$ DISCUSSION: https://discord.com/channels/859480656135192579/1397679323514802186
+#$ WARNING: Make sure to calibrate Accelerometer. Check gyro direction and do your pre-flight checks!!!!
+
+ 
+#$ OPTION BEGIN (CHECKED): Full setup except the options showed below
+    defaults nosave
+    # resources
+    resource SERVO 4 NONE
+    resource MOTOR 2 A15
+
+    # feature
+    feature RX_SERIAL
+    feature TELEMETRY
+    feature GOVERNOR
+    feature ESC_SENSOR
+    feature FREQ_SENSOR
+    feature RPM_FILTER
+
+    # serial
+    serial 1 1024 115200 57600 0 115200
+    serial 3 64 115200 57600 0 115200
+    # PWM Servos
+
+    # servo
+    servo 1 1500 -700 700 540 540 400 60 3
+    servo 2 1500 -700 700 540 540 400 60 3
+    servo 3 1500 -700 700 540 540 400 60 3
+
+    # mixer input
+    mixer input SR -917 917 670
+    mixer input SP -917 917 -670
+    mixer input SY -1000 1000 1000
+    mixer input SC -1167 1167 922
+
+    # map
+    map AECR1T23
+
+    # aux
+    aux 0 0 0 1950 2050 0 0
+    aux 1 53 2 1950 2050 0 0
+
+    # adjfunc
+    adjfunc 0 2 255 1500 1500 1 900 2015 1500 1500 0 1 3
+    adjfunc 1 1 255 1500 1500 1 875 2000 1500 1500 0 1 3
+    
+
+    # master
+    set gyro_lpf1_static_hz = 200
+    set dyn_notch_count = 4
+    set dyn_notch_q = 45
+    set dyn_notch_min_hz = 40
+    set dyn_notch_max_hz = 250
+    set dshot_bidir = ON
+    set use_unsynced_pwm = OFF
+    set motor_pwm_protocol = DSHOT300
+    set motor_poles = 24,12,0,0
+    set align_board_yaw = 180
+    set bat_profile = 1
+    set bat_capacity = 650,0,0,0,0,0
+    set current_meter = ESC
+    set battery_meter = ESC
+    set battery_cell_count = 4
+    set smartfuel_sag_gain = 60
+    set tail_rotor_mode = MOTORIZED
+    set tail_motor_idle = 50
+    set swash_pitch_limit = 1750
+    set swash_geo_correction = 24
+    set gov_mode = ELECTRIC
+    set gov_throttle_type = FUNCTION
+    set gov_startup_time = 400
+    set gov_handover_throttle = 10
+    set gov_tta_filter = 20
+    set gov_ff_filter = 30
+    set rc_min_throttle = 1020
+    set rc_max_throttle = 2000
+    set rc_smoothness = 60
+    set deadband = 2
+    set yaw_deadband = 2
+    set esc_sensor_protocol = HOBBYWINGV5
+    set esc_sensor_halfduplex = on
+    set esc_sensor_pinswap = on
+    set gyro_rpm_notch_preset = 0
+    set gyro_rpm_notch_min_hz = 40
+    set gyro_rpm_notch_source_pitch = 10,11,12,13,14,21,0,0,0,0,0,0,0,0,0,0
+    set gyro_rpm_notch_q_pitch = 80,80,30,100,100,100,0,0,0,0,0,0,0,0,0,0
+    set gyro_rpm_notch_source_roll = 10,11,12,13,14,21,22,0,0,0,0,0,0,0,0,0
+    set gyro_rpm_notch_q_roll = 80,60,30,100,100,100,100,0,0,0,0,0,0,0,0,0
+    set gyro_rpm_notch_source_yaw = 10,11,12,13,14,21,22,0,0,0,0,0,0,0,0,0
+    set gyro_rpm_notch_q_yaw = 80,80,40,100,100,100,100,0,0,0,0,0,0,0,0,0
+    set name = Stratos 200
+#$ OPTION END
+   
+
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Choose dashboard telemetry sensors
+    #$ OPTION BEGIN (UNCHECKED): RF2 dashboards (Shmuely)
+    set telemetry_sensors = 3,4,5,6,7,8,43,50,60,88,90,91,99,95,96,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): Flylog dashboard
+    set telemetry_sensors = 3,43,4,5,6,60,15,50,52,93,90,27,28,21,24,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): Bob01 ETX-widgets
+    set telemetry_sensors = 3,4,5,6,60,15,50,93,27,28,8,7,46,23,89,1,90,91,95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): Bei Ke dashboard
+    set telemetry_sensors = 3,43,4,5,6,60,15,50,52,93,90,8,27,89,1,99,58,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Choose ELRS packet rate
+    #$ OPTION BEGIN (UNCHECKED): 250hz
+    set serialrx_provider = CRSF
+    set crsf_telemetry_mode = CUSTOM
+    set crsf_telemetry_link_rate = 250
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 333hz
+    set serialrx_provider = CRSF
+    set crsf_telemetry_mode = CUSTOM
+    set crsf_telemetry_link_rate = 333
+    #$ OPTION END
+    #$ OPTION BEGIN (CHECKED): 500hz
+    set serialrx_provider = CRSF
+    set crsf_telemetry_mode = CUSTOM
+    set crsf_telemetry_link_rate = 500
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): D500/F1000
+    set serialrx_provider = CRSF
+    set crsf_telemetry_mode = CUSTOM
+    set crsf_telemetry_link_rate = 1000
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+#$ OPTION_GROUP BEGIN: (EXCLUSIVE) Choose telemetry ratio
+    #$ OPTION BEGIN (UNCHECKED): 1:2 
+    set crsf_telemetry_link_ratio = 2
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 1:4
+    set crsf_telemetry_link_ratio = 4
+    #$ OPTION END
+    #$ OPTION BEGIN (CHECKED): 1:8
+    set crsf_telemetry_link_ratio = 8
+    #$ OPTION END
+    #$ OPTION BEGIN (UNCHECKED): 1:16
+    set crsf_telemetry_link_ratio = 16
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+
+#$ OPTION_GROUP BEGIN: Profiles
+    #$ OPTION BEGIN (CHECKED): P1 4200 rpm
+    profile 0
+    # profile 0
+    set profile_name = P1
+    set pid_mode = 3
+    set pitch_p_gain = 84
+    set pitch_i_gain = 120
+    set pitch_d_gain = 12
+    set pitch_f_gain = 95
+    set pitch_b_gain = 22
+    set pitch_o_gain = 30
+    set roll_p_gain = 50
+    set roll_i_gain = 120
+    set roll_d_gain = 12
+    set roll_f_gain = 95
+    set roll_b_gain = 15
+    set roll_o_gain = 28
+    set yaw_p_gain = 65
+    set yaw_i_gain = 105
+    set yaw_d_gain = 45
+    set yaw_b_gain = 35
+    set yaw_f_gain = 13
+    set pitch_d_cutoff = 40
+    set pitch_b_cutoff = 40
+    set pitch_gyro_cutoff = 170
+    set roll_d_cutoff = 40
+    set roll_b_cutoff = 40
+    set roll_gyro_cutoff = 170
+    set yaw_d_cutoff = 40
+    set yaw_b_cutoff = 40
+    set yaw_gyro_cutoff = 170
+    set yaw_cw_stop_gain = 130
+    set yaw_ccw_stop_gain = 85
+    set yaw_precomp_cutoff = 18
+    set yaw_cyclic_ff_gain = 10
+    set yaw_collective_ff_gain = 50
+    set yaw_inertia_precomp_gain = 5
+    set yaw_inertia_precomp_cutoff = 250
+    set pitch_collective_ff_gain = 0
+    set cyclic_cross_coupling_gain = 50
+    set cyclic_cross_coupling_ratio = 6
+    set cyclic_cross_coupling_cutoff = 30
+    set error_limit = 50,50,60
+    set offset_limit = 80,80
+    set error_decay_time_ground = 25
+    set error_decay_time_cyclic = 150
+    set error_decay_time_yaw = 0
+    set error_decay_limit_cyclic = 12
+    set error_decay_limit_yaw = 0
+    set offset_flood_relax_level = 45
+    set offset_flood_relax_cutoff = 14
+    set iterm_relax_type = RPY
+    set iterm_relax_level = 45,45,40
+    set iterm_relax_cutoff = 18,18,18
+    set angle_level_strength = 40
+    set angle_level_limit = 55
+    set horizon_level_strength = 40
+    set horizon_transition = 75
+    set horizon_tilt_effect = 75
+    set horizon_tilt_expert_mode = OFF
+    set acro_trainer_angle_limit = 20
+    set acro_trainer_lookahead_ms = 50
+    set acro_trainer_gain = 75
+    set rescue_mode = OFF
+    set rescue_flip = ON
+    set rescue_flip_gain = 200
+    set rescue_level_gain = 85
+    set rescue_pull_up_time = 2
+    set rescue_climb_time = 3
+    set rescue_flip_time = 20
+    set rescue_exit_time = 5
+    set rescue_pull_up_collective = 1000
+    set rescue_climb_collective = 650
+    set rescue_hover_collective = 400
+    set rescue_hover_altitude = 500
+    set rescue_alt_p_gain = 20
+    set rescue_alt_i_gain = 20
+    set rescue_alt_d_gain = 10
+    set rescue_max_sp_rate = 300
+    set rescue_max_sp_accel = 800
+    set rescue_max_collective = 500
+    set gov_use_fallback_precomp = OFF
+    set gov_use_pid_spoolup = OFF
+    set gov_use_voltage_comp = OFF
+    set gov_use_dyn_min_throttle = ON
+    set gov_headspeed = 4200
+    set gov_gain = 50
+    set gov_p_gain = 30
+    set gov_i_gain = 60
+    set gov_d_gain = 2
+    set gov_f_gain = 12
+    set gov_p_limit = 40
+    set gov_i_limit = 95
+    set gov_d_limit = 5
+    set gov_f_limit = 40
+    set gov_tta_gain = 50
+    set gov_tta_limit = 60
+    set gov_yaw_ff_weight = 5
+    set gov_cyclic_ff_weight = 30
+    set gov_collective_ff_weight = 100
+    set gov_max_throttle = 100
+    set gov_min_throttle = 25
+    set gov_fallback_drop = 10
+    set gov_collective_curve = 20
+    set gov_dyn_min_throttle = 20
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): P2 5000 rpm
+    profile 1
+    # profile 1
+    set profile_name = P2
+    set pid_mode = 3
+    set pitch_p_gain = 82
+    set pitch_i_gain = 115
+    set pitch_d_gain = 12
+    set pitch_f_gain = 95
+    set pitch_b_gain = 22
+    set pitch_o_gain = 30
+    set roll_p_gain = 50
+    set roll_i_gain = 115
+    set roll_d_gain = 12
+    set roll_f_gain = 95
+    set roll_b_gain = 15
+    set roll_o_gain = 28
+    set yaw_p_gain = 65
+    set yaw_i_gain = 115
+    set yaw_d_gain = 45
+    set yaw_b_gain = 35
+    set yaw_f_gain = 15
+    set pitch_d_cutoff = 40
+    set pitch_b_cutoff = 40
+    set pitch_gyro_cutoff = 170
+    set roll_d_cutoff = 40
+    set roll_b_cutoff = 40
+    set roll_gyro_cutoff = 170
+    set yaw_d_cutoff = 40
+    set yaw_b_cutoff = 40
+    set yaw_gyro_cutoff = 170
+    set yaw_cw_stop_gain = 130
+    set yaw_ccw_stop_gain = 85
+    set yaw_precomp_cutoff = 18
+    set yaw_cyclic_ff_gain = 15
+    set yaw_collective_ff_gain = 50
+    set yaw_inertia_precomp_gain = 5
+    set yaw_inertia_precomp_cutoff = 250
+    set pitch_collective_ff_gain = 0
+    set cyclic_cross_coupling_gain = 50
+    set cyclic_cross_coupling_ratio = 6
+    set cyclic_cross_coupling_cutoff = 30
+    set error_limit = 50,50,60
+    set offset_limit = 80,80
+    set error_decay_time_ground = 25
+    set error_decay_time_cyclic = 150
+    set error_decay_time_yaw = 0
+    set error_decay_limit_cyclic = 12
+    set error_decay_limit_yaw = 0
+    set offset_flood_relax_level = 45
+    set offset_flood_relax_cutoff = 14
+    set iterm_relax_type = RPY
+    set iterm_relax_level = 45,45,40
+    set iterm_relax_cutoff = 18,18,18
+    set angle_level_strength = 40
+    set angle_level_limit = 55
+    set horizon_level_strength = 40
+    set horizon_transition = 75
+    set horizon_tilt_effect = 75
+    set horizon_tilt_expert_mode = OFF
+    set acro_trainer_angle_limit = 20
+    set acro_trainer_lookahead_ms = 50
+    set acro_trainer_gain = 75
+    set rescue_mode = OFF
+    set rescue_flip = ON
+    set rescue_flip_gain = 200
+    set rescue_level_gain = 85
+    set rescue_pull_up_time = 2
+    set rescue_climb_time = 3
+    set rescue_flip_time = 20
+    set rescue_exit_time = 5
+    set rescue_pull_up_collective = 950
+    set rescue_climb_collective = 650
+    set rescue_hover_collective = 400
+    set rescue_hover_altitude = 500
+    set rescue_alt_p_gain = 20
+    set rescue_alt_i_gain = 20
+    set rescue_alt_d_gain = 10
+    set rescue_max_sp_rate = 300
+    set rescue_max_sp_accel = 800
+    set rescue_max_collective = 500
+    set gov_use_fallback_precomp = OFF
+    set gov_use_pid_spoolup = OFF
+    set gov_use_voltage_comp = OFF
+    set gov_use_dyn_min_throttle = ON
+    set gov_headspeed = 5000
+    set gov_gain = 50
+    set gov_p_gain = 30
+    set gov_i_gain = 60
+    set gov_d_gain = 2
+    set gov_f_gain = 12
+    set gov_p_limit = 40
+    set gov_i_limit = 95
+    set gov_d_limit = 5
+    set gov_f_limit = 40
+    set gov_tta_gain = 40
+    set gov_tta_limit = 60
+    set gov_yaw_ff_weight = 5
+    set gov_cyclic_ff_weight = 35
+    set gov_collective_ff_weight = 100
+    set gov_max_throttle = 100
+    set gov_min_throttle = 25
+    set gov_fallback_drop = 10
+    set gov_collective_curve = 20
+    set gov_dyn_min_throttle = 20
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): P3 5600 rpm
+    profile 2
+    # profile 2
+    set profile_name = P3
+    set pid_mode = 3
+    set pitch_p_gain = 78
+    set pitch_i_gain = 115
+    set pitch_d_gain = 12
+    set pitch_f_gain = 95
+    set pitch_b_gain = 22
+    set pitch_o_gain = 30
+    set roll_p_gain = 48
+    set roll_i_gain = 115
+    set roll_d_gain = 12
+    set roll_f_gain = 95
+    set roll_b_gain = 15
+    set roll_o_gain = 28
+    set yaw_p_gain = 65
+    set yaw_i_gain = 120
+    set yaw_d_gain = 45
+    set yaw_b_gain = 35
+    set yaw_f_gain = 15
+    set pitch_d_cutoff = 40
+    set pitch_b_cutoff = 40
+    set pitch_gyro_cutoff = 170
+    set roll_d_cutoff = 40
+    set roll_b_cutoff = 40
+    set roll_gyro_cutoff = 170
+    set yaw_d_cutoff = 40
+    set yaw_b_cutoff = 40
+    set yaw_gyro_cutoff = 170
+    set yaw_cw_stop_gain = 130
+    set yaw_ccw_stop_gain = 85
+    set yaw_precomp_cutoff = 18
+    set yaw_cyclic_ff_gain = 15
+    set yaw_collective_ff_gain = 50
+    set yaw_inertia_precomp_gain = 5
+    set yaw_inertia_precomp_cutoff = 250
+    set pitch_collective_ff_gain = 0
+    set cyclic_cross_coupling_gain = 50
+    set cyclic_cross_coupling_ratio = 6
+    set cyclic_cross_coupling_cutoff = 30
+    set error_limit = 50,50,60
+    set offset_limit = 80,80
+    set error_decay_time_ground = 25
+    set error_decay_time_cyclic = 150
+    set error_decay_time_yaw = 0
+    set error_decay_limit_cyclic = 12
+    set error_decay_limit_yaw = 0
+    set offset_flood_relax_level = 45
+    set offset_flood_relax_cutoff = 14
+    set iterm_relax_type = RPY
+    set iterm_relax_level = 45,45,40
+    set iterm_relax_cutoff = 18,18,18
+    set angle_level_strength = 40
+    set angle_level_limit = 55
+    set horizon_level_strength = 40
+    set horizon_transition = 75
+    set horizon_tilt_effect = 75
+    set horizon_tilt_expert_mode = OFF
+    set acro_trainer_angle_limit = 20
+    set acro_trainer_lookahead_ms = 50
+    set acro_trainer_gain = 75
+    set rescue_mode = OFF
+    set rescue_flip = ON
+    set rescue_flip_gain = 200
+    set rescue_level_gain = 85
+    set rescue_pull_up_time = 2
+    set rescue_climb_time = 3
+    set rescue_flip_time = 20
+    set rescue_exit_time = 5
+    set rescue_pull_up_collective = 950
+    set rescue_climb_collective = 650
+    set rescue_hover_collective = 400
+    set rescue_hover_altitude = 500
+    set rescue_alt_p_gain = 20
+    set rescue_alt_i_gain = 20
+    set rescue_alt_d_gain = 10
+    set rescue_max_sp_rate = 300
+    set rescue_max_sp_accel = 800
+    set rescue_max_collective = 500
+    set gov_use_fallback_precomp = OFF
+    set gov_use_pid_spoolup = OFF
+    set gov_use_voltage_comp = OFF
+    set gov_use_dyn_min_throttle = ON
+    set gov_headspeed = 5600
+    set gov_gain = 50
+    set gov_p_gain = 30
+    set gov_i_gain = 60
+    set gov_d_gain = 2
+    set gov_f_gain = 12
+    set gov_p_limit = 40
+    set gov_i_limit = 95
+    set gov_d_limit = 5
+    set gov_f_limit = 40
+    set gov_tta_gain = 30
+    set gov_tta_limit = 60
+    set gov_yaw_ff_weight = 5
+    set gov_cyclic_ff_weight = 35
+    set gov_collective_ff_weight = 100
+    set gov_max_throttle = 100
+    set gov_min_throttle = 25
+    set gov_fallback_drop = 10
+    set gov_collective_curve = 20
+    set gov_dyn_min_throttle = 20
+    #$ OPTION END
+#$ OPTION_GROUP END
+
+#$ OPTION_GROUP BEGIN: Rate profiles
+    #$ OPTION BEGIN (CHECKED): Rate 1 
+    rateprofile 0
+    # rateprofile 0
+    set rates_type = ROTORFLIGHT
+    set roll_rc_rate = 70
+    set pitch_rc_rate = 70
+    set yaw_rc_rate = 126
+    set collective_rc_rate = 112
+    set roll_expo = 20
+    set pitch_expo = 20
+    set yaw_expo = 50
+    set collective_expo = 0
+    set roll_srate = 5
+    set pitch_srate = 5
+    set yaw_srate = 5
+    set collective_srate = 0
+    set roll_accel_limit = 0
+    set pitch_accel_limit = 0
+    set yaw_accel_limit = 0
+    set collective_accel_limit = 0
+    set roll_level_expo = 0
+    set pitch_level_expo = 0
+    set roll_response = 15
+    set pitch_response = 15
+    set yaw_response = 4
+    set collective_response = 2
+    set cyclic_ring = 130
+    set cyclic_polar = OFF
+    set setpoint_boost_gain = 10,10,50,0
+    set setpoint_boost_cutoff = 15,15,90,15
+    set yaw_dynamic_ceiling_gain = 25
+    set yaw_dynamic_deadband_gain = 10
+    set yaw_dynamic_deadband_filter = 60
+    set yaw_dynamic_deadband_cutoff = 50
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): Rate 2
+    # rateprofile 1
+    set rates_type = ROTORFLIGHT
+    set roll_rc_rate = 70
+    set pitch_rc_rate = 70
+    set yaw_rc_rate = 126
+    set collective_rc_rate = 96
+    set roll_expo = 20
+    set pitch_expo = 20
+    set yaw_expo = 50
+    set collective_expo = 0
+    set roll_srate = 5
+    set pitch_srate = 5
+    set yaw_srate = 5
+    set collective_srate = 0
+    set roll_accel_limit = 0
+    set pitch_accel_limit = 0
+    set yaw_accel_limit = 0
+    set collective_accel_limit = 0
+    set roll_level_expo = 0
+    set pitch_level_expo = 0
+    set roll_response = 12
+    set pitch_response = 12
+    set yaw_response = 4
+    set collective_response = 2
+    set cyclic_ring = 130
+    set cyclic_polar = OFF
+    set setpoint_boost_gain = 10,10,50,0
+    set setpoint_boost_cutoff = 15,15,90,15
+    set yaw_dynamic_ceiling_gain = 25
+    set yaw_dynamic_deadband_gain = 10
+    set yaw_dynamic_deadband_filter = 60
+    set yaw_dynamic_deadband_cutoff = 50
+    #$ OPTION END
+
+    #$ OPTION BEGIN (CHECKED): Rate 3
+    rateprofile 2
+    # rateprofile 2
+    set rateprofile_name = -
+    set rates_type = ROTORFLIGHT
+    set roll_rc_rate = 70
+    set pitch_rc_rate = 70
+    set yaw_rc_rate = 126
+    set collective_rc_rate = 96
+    set roll_expo = 20
+    set pitch_expo = 20
+    set yaw_expo = 50
+    set collective_expo = 0
+    set roll_srate = 5
+    set pitch_srate = 5
+    set yaw_srate = 5
+    set collective_srate = 0
+    set roll_accel_limit = 0
+    set pitch_accel_limit = 0
+    set yaw_accel_limit = 0
+    set collective_accel_limit = 0
+    set roll_level_expo = 0
+    set pitch_level_expo = 0
+    set roll_response = 12
+    set pitch_response = 12
+    set yaw_response = 4
+    set collective_response = 2
+    set cyclic_ring = 130
+    set cyclic_polar = OFF
+    set setpoint_boost_gain = 10,10,50,0
+    set setpoint_boost_cutoff = 15,15,90,15
+    set yaw_dynamic_ceiling_gain = 25
+    set yaw_dynamic_deadband_gain = 10
+    set yaw_dynamic_deadband_filter = 60
+    set yaw_dynamic_deadband_cutoff = 50
+    #$ OPTION END
+#$ OPTION_GROUP END
