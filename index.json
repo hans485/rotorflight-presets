@@ -1078,6 +1078,25 @@
       "force_options_review": true
     },
     {
+      "fullPath": "presets/Rotorflight/setup/Nexus-X.txt",
+      "hash": "2accaf8446e65ddafe21879da33744503793d47b4c3a3266747500d9d7f1d238",
+      "title": "Stratos 200 setup and tune (4S)",
+      "firmware_version": [
+        "4.6"
+      ],
+      "board_name": [
+        "NEXUS_X"
+      ],
+      "category": "SETUP",
+      "status": "EXPERIMENTAL",
+      "keywords": [
+        "Stratos 200"
+      ],
+      "author": "Rotorflight",
+      "priority": 0,
+      "force_options_review": true
+    },
+    {
       "fullPath": "presets/Rotorflight/setup/Nexus-XR.txt",
       "hash": "c48deff0d3af4b84fdceaf4c5986511fe6385278a5ac009140d183ddc4f6cb95",
       "title": "Stratos 200 setup and tune (4S)",
