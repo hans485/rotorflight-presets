@@ -343,7 +343,7 @@
     },
     {
       "fullPath": "presets/Hans/remap/bufferpacks/GOOSKY_F701.txt",
-      "hash": "320516c5a57ec85276a4df5fb47f336fdbbd9a28e94a49523d84307679cb4748",
+      "hash": "2b35d0023c0a439104dd3ae58b97563d4fddbb0600c6e690f69f9c8fc442ca98",
       "title": "Servo 5: PWM, Servo, Glow driver, Capacitor, Buffer pack, Light ctrlr, retractable landing gear",
       "firmware_version": [
         "4.5",
